@@ -1,5 +1,5 @@
 {
-    "name": "todolist",
+    "name": "notes",
     "version": "1.0.0",
     "description": "",
     "main": "server.js",
@@ -17,5 +17,9 @@
     "bugs": {
         "url": "https://github.com/Wenodh/todolist/issues"
     },
-    "homepage": "https://github.com/Wenodh/todolist#readme"
+    "homepage": "https://github.com/Wenodh/todolist#readme",
+    "dependencies": {
+        "dotenv": "^10.0.0",
+        "nodemon": "^2.0.15"
+    }
 }
