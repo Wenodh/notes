@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row } from 'react-bootstrap';
-
+import './MainScreen.css';
 const MainScreen = ({ tittle, children }) => {
     return (
         <div className="mainBack">
