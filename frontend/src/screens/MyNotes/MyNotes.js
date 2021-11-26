@@ -1,9 +1,22 @@
+import { useEffect } from 'react';
 import { Accordion, Badge, Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import MainScreen from '../../components/MainScreen';
+import axios from 'axios';
 
 const MyNotes = () => {
     let notes = ['apple', 'dfsjkdbv fdv', 'dfsvgsfdbdgb', 'dfbvgsdfb'];
+    const deleteHandler = (id) => {
+        if (window.confirm('Are you sure you want to delete this note?')) {
+        }
+    };
+    useEffect(() => {
+        const fetchNotes = async () => {
+            const { data } = await axios.get('/api/notes');
+            console.log(data);
+        };
+        fetchNotes();
+    }, []);
     return (
         <>
             <MainScreen tittle={'Welcome back Wenodh...'}>
