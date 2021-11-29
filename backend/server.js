@@ -1,5 +1,6 @@
 const express = require('express');
 const connectDb = require('./config/db');
+const { notFound, errorHandler } = require('./middlewares/errorMiddleware');
 const userRoutes = require('./routes/userRoutes');
 require('dotenv').config();
 const app = express();
@@ -13,6 +14,9 @@ app.get('/api/notes', (req, res) => {
     res.send('notes');
 });
 app.use('/api/users', userRoutes);
+app.use(notFound);
+app.use(errorHandler);
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
