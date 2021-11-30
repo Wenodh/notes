@@ -4,12 +4,17 @@ const { notFound, errorHandler } = require('./middlewares/errorMiddleware');
 const userRoutes = require('./routes/userRoutes');
 require('dotenv').config();
 const app = express();
-
 connectDb();
+
 app.use(express.json());
-app.get('/', (req, res) => {
-    res.send('Express server Running');
-});
+_dirname = path.resolve();
+if (process.env.NODE_ENV === 'production') {
+    app.use();
+} else {
+    app.get('/', (req, res) => {
+        res.send('Express server Running');
+    });
+}
 app.get('/api/notes', (req, res) => {
     res.send('notes');
 });

@@ -1,5 +1,6 @@
 const User = require('../models/userModel');
 const asyncHandler = require('express-async-handler');
+const generateToken = require('../utils/generateToken');
 const registerUser = asyncHandler(async (req, res) => {
     const { name, email, password, pic } = req.body;
     const userExists = await User.findOne({ email });
@@ -16,6 +17,7 @@ const registerUser = asyncHandler(async (req, res) => {
             email: user.email,
             isAdmin: user.isAdmin,
             pic: user.pic,
+            token: generateToken(user._id),
         });
     } else {
         return res.status(400).json({
@@ -33,6 +35,7 @@ const authUser = asyncHandler(async (req, res) => {
             email: user.email,
             isAdmin: user.isAdmin,
             pic: user.pic,
+            token: generateToken(user._id),
         });
     } else {
         res.status(401).json({ message: 'Invalid credentials' });
