@@ -2,14 +2,20 @@ const express = require('express');
 const connectDb = require('./config/db');
 const { notFound, errorHandler } = require('./middlewares/errorMiddleware');
 const userRoutes = require('./routes/userRoutes');
+const path = require('path');
 require('dotenv').config();
 const app = express();
 connectDb();
 
 app.use(express.json());
+
 _dirname = path.resolve();
 if (process.env.NODE_ENV === 'production') {
-    app.use();
+    app.use(express.static(path.join(__dirname, '/frontend/build')));
+
+    app.get('*', (req, res) =>
+        res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
+    );
 } else {
     app.get('/', (req, res) => {
         res.send('Express server Running');
