@@ -24,6 +24,7 @@ const RegisterScreen = ({ history }) => {
     // const { loading, error, userInfo } = userRegister;
 
     const postDetails = (pics) => {
+        console.log(process.env.REACT_APP_UPLOAD_URL);
         if (
             pics ===
             'https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg'
@@ -34,9 +35,9 @@ const RegisterScreen = ({ history }) => {
         if (pics.type === 'image/jpeg' || pics.type === 'image/png') {
             const data = new FormData();
             data.append('file', pics);
-            data.append('upload_preset', 'notesapi');
-            data.append('cloud_name', 'wenodh');
-            fetch('https://api.cloudinary.com/v1_1/wenodh/image/upload', {
+            data.append('upload_preset', process.env.REACT_APP_UPLOAD_PRESET);
+            data.append('cloud_name', process.env.REACT_APP_CLOUD_NAME);
+            fetch(process.env.REACT_APP_UPLOAD_URL, {
                 method: 'post',
                 body: data,
             })
