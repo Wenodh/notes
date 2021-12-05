@@ -1,6 +1,7 @@
 const express = require('express');
 const connectDb = require('./config/db');
 const { notFound, errorHandler } = require('./middlewares/errorMiddleware');
+const noteRoutes = require('./routes/noteRoutes.js');
 const userRoutes = require('./routes/userRoutes');
 const path = require('path');
 require('dotenv').config();
@@ -21,9 +22,7 @@ if (process.env.NODE_ENV === 'production') {
         res.send('Express server Running');
     });
 }
-app.get('/api/notes', (req, res) => {
-    res.send('notes');
-});
+app.use('/api/notes', noteRoutes);
 app.use('/api/users', userRoutes);
 app.use(notFound);
 app.use(errorHandler);

@@ -1,6 +1,8 @@
 {
     "json.maxItemsComputed": 10000,
     "cSpell.words": [
+        "createnote",
+        "middlewares",
         "postbuild"
     ]
 }

@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import ErrorMessage from '../../components/ErrMessage';
+import ErrorMessage from '../../components/ErrorMessage';
 import Loading from '../../components/Loading';
 import MainScreen from '../../components/MainScreen';
 import './LoginScreen.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../actions/userActions';
+
 const LoginScreen = ({ history }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -21,7 +22,7 @@ const LoginScreen = ({ history }) => {
         if (userInfo) {
             history.push('/mynotes');
         }
-    }, [userInfo]);
+    }, [history, userInfo]);
     return (
         <MainScreen tittle="LOGIN">
             <div className="loginContainer">

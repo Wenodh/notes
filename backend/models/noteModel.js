@@ -9,6 +9,10 @@ const noteSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
+        category: {
+            type: String,
+            required: true,
+        },
         user: {
             type: mongoose.Schema.Types.ObjectId,
             required: true,
@@ -18,4 +22,4 @@ const noteSchema = new mongoose.Schema(
     { timestamps: true }
 );
 const Note = mongoose.model('Note', noteSchema);
-export default Note;
+module.exports = Note;
